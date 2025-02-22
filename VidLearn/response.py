@@ -5,7 +5,7 @@ import PIL.Image
 
 image = PIL.Image.open('PNG/path/here.png')
 
-client = genai.Client(api_key="AIzaSyCZDI2WQbEAVhWH7AxasayTdkBK5yA5Uk8")
+client = genai.Client(api_key="API_KEY_HERE")
 response = client.models.generate_content(
 
     model="gemini-2.0-flash",
