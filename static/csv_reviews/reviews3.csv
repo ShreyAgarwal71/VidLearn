@@ -1,11 +1,11 @@
 Name,Score,Like Description,Dislike
-Okay I'm ready
-**Instructions,** For each of the people below assume they are checking the website the website's landing page image is attached make them rate the website out of 100 and tell me things theyd like and not like about it basically AB testing and this is one of the tested websites remove any unnecessary text and spacing between any addition text other than what I am going to give you should be removed only give one line per person and no other text and here's exactly how your output should be generated,
-X, X, X, X
-**People,**
-1 Sarah 25 fitness enthusiast
-2 John 40 casual energy drink consumer
-3 Emily 60 health-conscious retiree
-Sarah, 85, Vibrant imagery clear product focus, Cookie banner covering content
-John, 70," ""Buy Online"" button appealing flavor visuals", Intrusive cookie notice
-Emily, 60, Health benefits not immediately visible confusing navigation
+Emily, 75, Clean design product focus, Cookie consent banner is intrusive
+Michael, 60, Simple navigation, Too visually driven needs more technical product information
+Sarah, 85, Trendy aesthetic visually appealing, Cookie notification blocks content initially
+David, 40, Clear contact us link, Overwhelming visuals confusing navigation due to lack of text
+Alex, 90, Strong visual branding design-forward, Could use bolder typography
+Carlos, 70, Clean and modern look, Needs more data and case studies upfront
+Lisa, 65, Bright and appealing image, Cookie policy at the bottom no kids-friendly content
+Brandon, 50, Easily find products, Not enough practical details prefer clearer product images
+Katie, 80, Aesthetic and streamlined design, Cookie banner and no direct link to support or FAQ
+Sean, 45, Basic navigation links at the top, Too image-heavy; lacks detailed product information
