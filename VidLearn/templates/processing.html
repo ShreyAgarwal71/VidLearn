@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Processing Files</title>
+    <script>
+        function checkStatus() {
+            fetch('/status')
+                .then(response => response.json())
+                .then(data => {
+                    if (data.done) {
+                        window.location.href = '/display';
+                    } else {
+                        setTimeout(checkStatus, 2000);
+                    }
+                })
+                .catch(err => {
+                    console.error('Error fetching status:', err);
+                    setTimeout(checkStatus, 2000);
+                });
+        }
+        window.onload = checkStatus;
+    </script>
+</head>
+<body>
+    <h1>Please wait, processing your files...</h1>
+    <p>This may take a few moments.</p>
+</body>
+</html>

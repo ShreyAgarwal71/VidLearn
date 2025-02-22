@@ -1,11 +1,12 @@
+'''
 from google import genai
 from google.genai import types
 import csv
 import PIL.Image
 
 
-client = genai.Client(api_key="API_KEY_HERE")
-text_example = '''
+client = genai.Client(api_key="AIzaSyCZDI2WQbEAVhWH7AxasayTdkBK5yA5Uk8")
+text_example = 
 For each of the people above, assume they are checking the website. the website's landing page image is attached. make them rate the website out of 100, and tell me things theyd like and not like about it, basically AB testing, and this is one of the tested websites.
 remove any unnecessary text and spacing between, any addition text other than what i am going to give you should be removed. only give one line per person and no other text. and here's exactly how your output should be generated:
 Name: X| Score: X| Likes: X| Dislikes: X
@@ -169,7 +170,7 @@ Problems: Time management between administrative tasks and research, bureaucrati
 Values: Knowledge, intellectual integrity, and academic rigor
 Buying Decision Process: Makes decisions based on detailed product specifications, peer-reviewed studies, and long-term academic value; relies on expert opinions and academic endorsements
 Internet & Website Usage: Regularly accesses academic databases, professional journals, educational platforms, and academic networking sites (such as ResearchGate and LinkedIn) for research and collaboration
-'''
+
 
 
 
@@ -188,7 +189,7 @@ Internet & Website Usage: Regularly accesses academic databases, professional jo
 
 for i in range(1, 5):  # Loop from 1 to 5 (inclusive)\
     # print("FILE "+str(i))
-    filename = f'/content/version{i}.png'
+    filename = f'/Users/home/Documents/Programs/VidLearn/static/uploads/version{i}.png'
     try:
         image = PIL.Image.open(filename)
         # Process the image here (e.g., display, save, manipulate)
@@ -246,3 +247,61 @@ for i in range(1, 5):  # Loop from 1 to 5 (inclusive)\
         writer.writerows(rows)
 
     # print(f"CSV file '{csv_filename}' has been created successfully.")
+'''
+
+# response.py
+from google import genai
+from google.genai import types
+import csv
+import PIL.Image
+import os
+
+def process_uploaded_files(file_paths, csv_folder):
+    client = genai.Client(api_key="AIzaSyCZDI2WQbEAVhWH7AxasayTdkBK5yA5Uk8")
+    
+    text_example = '''
+For each of the people above, assume they are checking the website. the website's landing page image is attached. make them rate the website out of 100, and tell me things theyd like and not like about it, basically AB testing, and this is one of the tested websites.
+remove any unnecessary text and spacing between, any addition text other than what i am going to give you should be removed. only give one line per person and no other text. and here's exactly how your output should be generated:
+Name: X| Score: X| Likes: X| Dislikes: X
+...
+(Your full prompt text here)
+'''
+
+    # Loop over each provided PNG file
+    for i, file_path in enumerate(file_paths, start=1):
+        try:
+            image = PIL.Image.open(file_path)
+        except FileNotFoundError:
+            print(f"Error: File {file_path} not found.")
+            continue
+        except PIL.UnidentifiedImageError:
+            print(f"Error: {file_path} is not a valid image file.")
+            continue
+        except Exception as e:
+            print(f"An unexpected error occurred while processing {file_path}: {e}")
+            continue
+
+        response_obj = client.models.generate_content(
+            model="gemini-2.0-flash",
+            contents=[text_example, image]
+        )
+        text_data = response_obj.text
+
+        # Clean and process the response text to CSV-friendly format
+        input_data = text_data.replace("Name: ", "") \
+                              .replace("Score: ", "") \
+                              .replace("Likes: ", "") \
+                              .replace("Dislikes: ", "") \
+                              .replace(".", "") \
+                              .replace(":", "|") \
+                              .replace(",", "")
+        
+        rows = [row.split("|") for row in input_data.split("\n") if row.strip()]
+
+        # Define CSV file path
+        csv_filename = os.path.join(csv_folder, f'reviews{i}.csv')
+        with open(csv_filename, mode="w", newline="") as file:
+            writer = csv.writer(file)
+            writer.writerow(["Name", "Score", "Like Description", "Dislike"])
+            writer.writerows(rows)
+        print(f"CSV file '{csv_filename}' has been created successfully.")

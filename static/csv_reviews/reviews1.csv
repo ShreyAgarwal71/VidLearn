@@ -1,0 +1,8 @@
+Name,Score,Like Description,Dislike
+For each of the people above assume they are checking the website the website's landing page image is attached make them rate the website out of 100 and tell me things theyd like and not like about it basically AB testing and this is one of the tested websites
+remove any unnecessary text and spacing between any addition text other than what i am going to give you should be removed only give one line per person and no other text and here's exactly how your output should be generated,
+X, X, X, X
+Sarah a college student looking for affordable clothes, 75," Clear categories like ""Winter styles under $30"" fast shipping offer", Slightly cluttered layout overwhelming number of options
+John a senior citizen needing medical supplies, 60," ""Medical Care"" quick link at the top", Small text busy interface hard to find specific items quickly
+Emily a young professional looking for luxury items, 80," ""Luxury bestsellers"" section clean product images", General site navigation too much focus on deals rather than premium options
+David a father looking for Prime deals, 90," Obvious ""Try Prime"" offer clear indication of free shipping easy search bar", Could use better filtering of Prime-eligible products
