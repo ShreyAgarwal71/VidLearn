@@ -1,58 +1,143 @@
-from flask import Flask, request, render_template
-from werkzeug.utils import secure_filename
+
+# app.py
+import csv
+from flask import Flask, render_template, request, redirect, url_for, jsonify
+import threading
 import os
-import csv  
-
-from jinja2 import Template
-
-# Registering zip function to be used in Jinja2 templates
-
-
+import time
+import response  # Import the refactored response module
 
 app = Flask(__name__)
-app.config['UPLOAD_FOLDER'] = 'static/uploads/'
 
-os.makedirs(app.config['UPLOAD_FOLDER'], exist_ok=True)
+# Set paths for uploads and CSV output
+UPLOAD_FOLDER = '/Users/home/Documents/Programs/VidLearn/static/uploads'
+CSV_FOLDER = '/Users/home/Documents/Programs/VidLearn/static/csv_reviews'
+app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
+app.config['CSV_FOLDER'] = CSV_FOLDER
 
-app.jinja_env.globals.update(zip=zip)
+# Ensure the directories exist
+os.makedirs(UPLOAD_FOLDER, exist_ok=True)
+os.makedirs(CSV_FOLDER, exist_ok=True)
 
-personas = ['Emily', 'Michael', 'Sarah', 'David', 'Alex', 'Carlos', 'Lisa', 'Brandon', 'Katie', 'Sean']
+# Global status to track processing
+processing_status = {'done': False}
 
-def read_ratings(file_path):
-    ratings = {}
-    with open(file_path, mode='r') as file:
-        reader = csv.reader(file)
-        for row in reader:
-            if row: 
-                persona, rating = row
-                ratings[persona] = rating
-    return ratings
+def process_files(file_paths):
+    try:
+        # Call the function in response.py that processes the PNGs and creates CSVs
+        response.process_uploaded_files(file_paths, app.config['CSV_FOLDER'])
+    except Exception as e:
+        print("Error during processing:", e)
+    processing_status['done'] = True
 
 @app.route('/', methods=['GET', 'POST'])
 def index():
     if request.method == 'POST':
-        # Check if the post request has the files part
-        if 'files' not in request.files:
-            return render_template('index.html', personas=personas, uploaded_files=[[] for _ in personas])
-
         files = request.files.getlist('files')
-        uploaded_files = [[] for _ in personas]
+        if len(files) != 4:
+            message = "Please upload exactly 4 PNG files."
+            return render_template('index.html', message=message)
+        
+        file_paths = []
+        # Save files with sequential names (version1.png, version2.png, etc.)
+        for i, file in enumerate(files, start=1):
+            if file and file.filename.lower().endswith('.png'):
+                filename = f"version{i}.png"
+                file_path = os.path.join(app.config['UPLOAD_FOLDER'], filename)
+                file.save(file_path)
+                file_paths.append(file_path)
+            else:
+                message = "Only PNG files are allowed."
+                return render_template('index.html', message=message)
+        
+        # Reset processing status and launch processing in a background thread
+        processing_status['done'] = False
+        thread = threading.Thread(target=process_files, args=(file_paths,))
+        thread.start()
+        
+        # Redirect to the waiting/processing screen
+        return redirect(url_for('processing'))
+    
+    return render_template('index.html')
 
-        for i, file in enumerate(files):
-            if file and file.filename:
-                filename = secure_filename(file.filename)
-                file.save(os.path.join(app.config['UPLOAD_FOLDER'], filename))
-                # Assign the uploaded file to a persona
-                persona_index = i % len(personas)
-                uploaded_files[persona_index].append(filename)
+@app.route('/processing')
+def processing():
+    return render_template('processing.html')
 
-        # Read overall ratings from the external file
-        ratings = read_ratings('/Users/home/Documents/Programs/VidLearn/VidLearn/ratings.csv')
+@app.route('/status')
+def status():
+    return jsonify(processing_status)
 
-        return render_template('display.html', personas=personas, uploaded_files=uploaded_files, ratings=ratings)
-
-    # For GET request, render the upload form with empty uploaded_files
-    return render_template('index.html', personas=personas, uploaded_files=[[] for _ in personas])
+@app.route('/display')
+def display():
+    csv_data = []  # Will hold parsed CSV info for each file
+    try:
+        files = os.listdir(app.config['CSV_FOLDER'])
+    except Exception as e:
+        return render_template('display.html', csv_data=[], message=f"Error reading CSV folder: {str(e)}")
+    
+    # Process only CSV files (sorted to ensure consistent order)
+    for file in sorted(files):
+        if file.lower().endswith('.csv'):
+            file_path = os.path.join(app.config['CSV_FOLDER'], file)
+            with open(file_path, newline='') as csvfile:
+                reader = csv.reader(csvfile)
+                try:
+                    header = next(reader)
+                except StopIteration:
+                    header = []
+                rows = list(reader)
+            csv_data.append({
+                'filename': file,
+                'header': header,
+                'rows': rows
+            })
+    
+    message = "Processing complete." if csv_data else "No CSV files were found."
+    return render_template('display.html', csv_data=csv_data, message=message)
 
 if __name__ == '__main__':
     app.run(debug=True)
+
+'''
+import os
+import csv
+from flask import Flask, render_template, url_for
+
+app = Flask(__name__)
+
+# CSV folder path
+CSV_FOLDER = '/Users/home/Documents/Programs/VidLearn/static/csv_reviews'
+app.config['CSV_FOLDER'] = CSV_FOLDER
+
+@app.route('/display')
+def display():
+    csv_data = []  # Will hold parsed CSV info for each file
+    try:
+        files = os.listdir(app.config['CSV_FOLDER'])
+    except Exception as e:
+        return render_template('display.html', csv_data=[], message=f"Error reading CSV folder: {str(e)}")
+    
+    # Process only CSV files (sorted to ensure consistent order)
+    for file in sorted(files):
+        if file.lower().endswith('.csv'):
+            file_path = os.path.join(app.config['CSV_FOLDER'], file)
+            with open(file_path, newline='') as csvfile:
+                reader = csv.reader(csvfile)
+                try:
+                    header = next(reader)
+                except StopIteration:
+                    header = []
+                rows = list(reader)
+            csv_data.append({
+                'filename': file,
+                'header': header,
+                'rows': rows
+            })
+    
+    message = "Processing complete." if csv_data else "No CSV files were found."
+    return render_template('display.html', csv_data=csv_data, message=message)
+
+if __name__ == '__main__':
+    app.run(debug=True)
+'''

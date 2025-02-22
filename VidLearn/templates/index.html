@@ -1,15 +1,29 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <meta charset="UTF-8">
-  <title>File Upload</title>
+    <title>Upload PNG Files</title>
 </head>
 <body>
-  <h1>Upload Files</h1>
-  <form method="POST" enctype="multipart/form-data">
-    <label for="fileInput">Select files to upload:</label>
-    <input type="file" id="fileInput" name="files" multiple>
-    <button type="submit">Upload</button>
-  </form>
+    <h1>Upload PNG Files</h1>
+
+    {% if message %}
+        <p><strong>{{ message }}</strong></p>
+    {% endif %}
+
+    <form method="POST" enctype="multipart/form-data" action="/">
+        <input type="file" name="files" accept=".png" multiple>
+        <br><br>
+        <button type="submit">Upload Files</button>
+    </form>
+
+    {% if uploaded_files %}
+        <h2>Uploaded PNG Files:</h2>
+        <ul>
+            {% for file_info in uploaded_files %}
+                <li>Filename: {{ file_info.filename }} (Path: {{ file_info.filepath }})</li>
+            {% endfor %}
+        </ul>
+    {% endif %}
+
 </body>
 </html>

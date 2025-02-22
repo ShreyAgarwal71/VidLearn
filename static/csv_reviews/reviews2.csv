@@ -1,0 +1,9 @@
+Name,Score,Like Description,Dislike
+For each of the people above assume they are checking the website the website's landing page image is attached make them rate the website out of 100 and tell me things theyd like and not like about it basically AB testing and this is one of the tested websites
+remove any unnecessary text and spacing between any addition text other than what i am going to give you should be removed only give one line per person and no other text and here's exactly how your output should be generated,
+X, X, X, X
+John (Tech novice), John, 70," Clear ""Get Windows 11"" button", Confusing navigation at the top
+Sarah (Business professional), Sarah, 85," Clean design and ""Continue to business version"" link", Could benefit from more specific business-oriented content
+David (Gamer), David, 60, Promise of intuitive use, No focus on gaming features generic feel
+Emily (Student), Emily, 90, Simple and easy to understand welcoming message, Not enough detail about student-specific features
+Robert (Senior citizen), Robert, 50, Large text and clear headings, Too much text not enough visuals

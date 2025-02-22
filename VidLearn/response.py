@@ -1,15 +1,15 @@
+'''
 from google import genai
 from google.genai import types
-
+import csv
 import PIL.Image
 
-image = PIL.Image.open('/insert/image/path.png')
 
-client = genai.Client(api_key="INSERT_API_KEY")
-text_example = '''
+client = genai.Client(api_key="AIzaSyCZDI2WQbEAVhWH7AxasayTdkBK5yA5Uk8")
+text_example = 
 For each of the people above, assume they are checking the website. the website's landing page image is attached. make them rate the website out of 100, and tell me things theyd like and not like about it, basically AB testing, and this is one of the tested websites.
-remove any unnecessary text, any addition text other than what i am going to give you should be removed. only give one line per person and no other text. and here's exactly how your output should be generated: 
-Name: X, Score: X, Likes: X, Dislikes: X
+remove any unnecessary text and spacing between, any addition text other than what i am going to give you should be removed. only give one line per person and no other text. and here's exactly how your output should be generated:
+Name: X| Score: X| Likes: X| Dislikes: X
 
 1. Emily – The Ambitious Millennial Professional
 Age: 28
@@ -170,14 +170,138 @@ Problems: Time management between administrative tasks and research, bureaucrati
 Values: Knowledge, intellectual integrity, and academic rigor
 Buying Decision Process: Makes decisions based on detailed product specifications, peer-reviewed studies, and long-term academic value; relies on expert opinions and academic endorsements
 Internet & Website Usage: Regularly accesses academic databases, professional journals, educational platforms, and academic networking sites (such as ResearchGate and LinkedIn) for research and collaboration
-'''
-response = client.models.generate_content(
+
+
+
+
+# image = PIL.Image.open('/content/openaiabout1.png')
+
+# response = client.models.generate_content(
+
+#     # model="gemini-2.0-flash",
+#     model="gemini-1.5-flash-8b-exp-0827",
+#     contents=["what is the company called", image])
+
+# print(response.text)
+
+
+
+
+for i in range(1, 5):  # Loop from 1 to 5 (inclusive)\
+    # print("FILE "+str(i))
+    filename = f'/Users/home/Documents/Programs/VidLearn/static/uploads/version{i}.png'
+    try:
+        image = PIL.Image.open(filename)
+        # Process the image here (e.g., display, save, manipulate)
+        # Example: image.show()  # Display the image (if you have a display)
+        # Example: image.save(f"/content/processed_image_{i}.png") #save a copy
+
+    except FileNotFoundError:
+        print(f"Error: File {filename} not found.")
+    except PIL.UnidentifiedImageError:
+        print(f"Error: {filename} is not a valid image file.")
+    except Exception as e:
+        print(f"An unexpected error occurred while processing {filename}: {e}")
+    response = client.models.generate_content(
 
     model="gemini-2.0-flash",
     # model="gemini-1.5-flash-8b-exp-0827",
     contents=[text_example, image])
 
-print(response.text)
+    # print(response.text)
+    text_data = response.text
 
-with open("response.txt", "w") as file:
-    file.write(response.text)
+
+
+
+
+
+
+
+
+
+    # Input data as a string
+    input_data = text_data
+    input_data = input_data.replace("Name: ", "")
+    input_data = input_data.replace("Score: ", "")
+    input_data = input_data.replace("Likes: ", "")
+    input_data = input_data.replace("Dislikes: ", "")
+    input_data = input_data.replace(".", "")
+    input_data = input_data.replace(":", "|")
+    input_data = input_data.replace(",", "")
+
+    data = input_data
+
+
+    # Split data into rows
+    #rows = [row.split("|") for row in data.split("\n")]
+    rows = [row.split("|") for row in data.split("\n") if row.strip()]
+
+    # Define CSV file name
+    csv_filename = f'reviews{i}.csv'
+
+    # Write to CSV
+    with open(csv_filename, mode="w", newline="") as file:
+        writer = csv.writer(file)
+        writer.writerow(["Name", "Score", "Like Description", "Dislike"])  # Column headers
+        writer.writerows(rows)
+
+    # print(f"CSV file '{csv_filename}' has been created successfully.")
+'''
+
+# response.py
+from google import genai
+from google.genai import types
+import csv
+import PIL.Image
+import os
+
+def process_uploaded_files(file_paths, csv_folder):
+    client = genai.Client(api_key="AIzaSyCZDI2WQbEAVhWH7AxasayTdkBK5yA5Uk8")
+    
+    text_example = '''
+For each of the people above, assume they are checking the website. the website's landing page image is attached. make them rate the website out of 100, and tell me things theyd like and not like about it, basically AB testing, and this is one of the tested websites.
+remove any unnecessary text and spacing between, any addition text other than what i am going to give you should be removed. only give one line per person and no other text. and here's exactly how your output should be generated:
+Name: X| Score: X| Likes: X| Dislikes: X
+...
+(Your full prompt text here)
+'''
+
+    # Loop over each provided PNG file
+    for i, file_path in enumerate(file_paths, start=1):
+        try:
+            image = PIL.Image.open(file_path)
+        except FileNotFoundError:
+            print(f"Error: File {file_path} not found.")
+            continue
+        except PIL.UnidentifiedImageError:
+            print(f"Error: {file_path} is not a valid image file.")
+            continue
+        except Exception as e:
+            print(f"An unexpected error occurred while processing {file_path}: {e}")
+            continue
+
+        response_obj = client.models.generate_content(
+            model="gemini-2.0-flash",
+            contents=[text_example, image]
+        )
+        text_data = response_obj.text
+
+        # Clean and process the response text to CSV-friendly format
+        input_data = text_data.replace("Name: ", "") \
+                              .replace("Score: ", "") \
+                              .replace("Likes: ", "") \
+                              .replace("Dislikes: ", "") \
+                              .replace(".", "") \
+                              .replace(":", "|") \
+                              .replace(",", "")
+        
+        rows = [row.split("|") for row in input_data.split("\n") if row.strip()]
+
+        # Define CSV file path
+        csv_filename = os.path.join(csv_folder, f'reviews{i}.csv')
+        with open(csv_filename, mode="w", newline="") as file:
+            writer = csv.writer(file)
+            writer.writerow(["Name", "Score", "Like Description", "Dislike"])
+            writer.writerows(rows)
+        print(f"CSV file '{csv_filename}' has been created successfully.")
