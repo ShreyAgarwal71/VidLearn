@@ -10,8 +10,10 @@ import response  # Import the refactored response module
 app = Flask(__name__)
 
 # Set paths for uploads and CSV output
-UPLOAD_FOLDER = '/Users/home/Documents/Programs/VidLearn/static/uploads'
-CSV_FOLDER = '/Users/home/Documents/Programs/VidLearn/static/csv_reviews'
+#UPLOAD_FOLDER = '/Users/home/Documents/Programs/VidLearn/static/uploads'
+#CSV_FOLDER = r'C:\Users\Shiven Saxena\Downloads\VidLearn\static\csv_reviews'
+UPLOAD_FOLDER = r'C:\Users\Shiven Saxena\Downloads\VidLearn\static\uploads'
+CSV_FOLDER = r'C:\Users\Shiven Saxena\Downloads\VidLearn\static\csv_reviews'
 app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
 app.config['CSV_FOLDER'] = CSV_FOLDER
 

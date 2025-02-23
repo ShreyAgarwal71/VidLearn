@@ -1,11 +1,7 @@
 Name,Score,Like Description,Dislike
-Okay I'm ready
-**Instructions,** For each of the people below assume they are checking the website the website's landing page image is attached make them rate the website out of 100 and tell me things theyd like and not like about it basically AB testing and this is one of the tested websites remove any unnecessary text and spacing between any addition text other than what I am going to give you should be removed only give one line per person and no other text and here's exactly how your output should be generated,
-X, X, X, X
-**People,**
-1 Sarah 25 fitness enthusiast
-2 John 40 casual energy drink consumer
-3 Emily 60 health-conscious retiree
-Sarah, 85, Vibrant imagery clear product focus, Cookie banner covering content
-John, 70," ""Buy Online"" button appealing flavor visuals", Intrusive cookie notice
-Emily, 60, Health benefits not immediately visible confusing navigation
+Okay I'm ready Here is the output based on your instructions,
+Civil Engineer, 75, Clear visual of a tunnel system project details, Vague needs more technical information upfront
+Tech Investor, 85, Futuristic design potential for growth, Needs quicker access to financial reports
+Job Seeker, 60, Careers link is visible unique aesthetic, Not enough immediate info on job openings
+Dubai Resident, 90, Announcement about Dubai project modern feel, Needs Arabic language option
+Elon Musk Fan, 100, Flamethrower link overall design, None
