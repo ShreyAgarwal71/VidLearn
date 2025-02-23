@@ -5,26 +5,27 @@
     <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
 </head>
 <body>
-    <h1>Upload PNG Files</h1>
+    <div class="container">
+        <h1>Upload PNG Files</h1>
 
-    {% if message %}
-        <p><strong>{{ message }}</strong></p>
-    {% endif %}
+        {% if message %}
+            <p><strong>{{ message }}</strong></p>
+        {% endif %}
 
-    <form method="POST" enctype="multipart/form-data" action="/">
-        <input type="file" name="files" accept=".png" multiple>
-        <br><br>
-        <button type="submit">Upload Files</button>
-    </form>
+        <form method="POST" enctype="multipart/form-data" action="/">
+            <input type="file" name="files" accept=".png" multiple>
+            <br><br>
+            <button type="submit">Upload Files</button>
+        </form>
 
-    {% if uploaded_files %}
-        <h2>Uploaded PNG Files:</h2>
-        <ul>
-            {% for file_info in uploaded_files %}
-                <li>Filename: {{ file_info.filename }} (Path: {{ file_info.filepath }})</li>
-            {% endfor %}
-        </ul>
-    {% endif %}
-
+        {% if uploaded_files %}
+            <h2>Uploaded PNG Files:</h2>
+            <ul>
+                {% for file_info in uploaded_files %}
+                    <li>Filename: {{ file_info.filename }} (Path: {{ file_info.filepath }})</li>
+                {% endfor %}
+            </ul>
+        {% endif %}
+    </div>
 </body>
 </html>
