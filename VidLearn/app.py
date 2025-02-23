@@ -92,52 +92,10 @@ def display():
                 'header': header,
                 'rows': rows
             })
-    
+
     message = "Processing complete." if csv_data else "No CSV files were found."
     return render_template('display.html', csv_data=csv_data, message=message)
 
 if __name__ == '__main__':
     app.run(debug=True)
 
-'''
-import os
-import csv
-from flask import Flask, render_template, url_for
-
-app = Flask(__name__)
-
-# CSV folder path
-CSV_FOLDER = '/Users/home/Documents/Programs/VidLearn/static/csv_reviews'
-app.config['CSV_FOLDER'] = CSV_FOLDER
-
-@app.route('/display')
-def display():
-    csv_data = []  # Will hold parsed CSV info for each file
-    try:
-        files = os.listdir(app.config['CSV_FOLDER'])
-    except Exception as e:
-        return render_template('display.html', csv_data=[], message=f"Error reading CSV folder: {str(e)}")
-    
-    # Process only CSV files (sorted to ensure consistent order)
-    for file in sorted(files):
-        if file.lower().endswith('.csv'):
-            file_path = os.path.join(app.config['CSV_FOLDER'], file)
-            with open(file_path, newline='') as csvfile:
-                reader = csv.reader(csvfile)
-                try:
-                    header = next(reader)
-                except StopIteration:
-                    header = []
-                rows = list(reader)
-            csv_data.append({
-                'filename': file,
-                'header': header,
-                'rows': rows
-            })
-    
-    message = "Processing complete." if csv_data else "No CSV files were found."
-    return render_template('display.html', csv_data=csv_data, message=message)
-
-if __name__ == '__main__':
-    app.run(debug=True)
-'''
