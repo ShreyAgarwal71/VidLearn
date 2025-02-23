@@ -1,15 +1,22 @@
-'''
 from google import genai
 from google.genai import types
 import csv
 import PIL.Image
+import os
+import re
 
 
-client = genai.Client(api_key="AIzaSyCZDI2WQbEAVhWH7AxasayTdkBK5yA5Uk8")
-text_example = 
-For each of the people above, assume they are checking the website. the website's landing page image is attached. make them rate the website out of 100, and tell me things theyd like and not like about it, basically AB testing, and this is one of the tested websites.
-remove any unnecessary text and spacing between, any addition text other than what i am going to give you should be removed. only give one line per person and no other text. and here's exactly how your output should be generated:
-Name: X| Score: X| Likes: X| Dislikes: X
+def sanitize_filename(s):
+    # Remove any characters that are not alphanumeric or underscores.
+    return re.sub(r'\W+', '_', s)
+
+def process_uploaded_files(file_paths, csv_folder):
+    client = genai.Client(api_key="AIzaSyCZDI2WQbEAVhWH7AxasayTdkBK5yA5Uk8")
+    
+    text_example = '''
+For each persona listed below, assume they are checking the catalog in the images. For each of the products in the catalogue image, think for and determine how likely each person would buy the product, as a number out of 100. Then have them give a number out of 100 rating the score, and a number out of 100 rating the price. If the number for the overall “score” is between 60 and 80, then give a sentence on what could change about the product that would then make the persona buy it. If the number is above 80, then leave the reason blank. Format the response according to the following:
+remove any unnecessary text and spacing between, any additional text other than what i am going to give you should be removed. only give one line per persona and no other text. and here's exactly how your output should be generated:
+Name: X| Product: X| Score: X| Price: X| Design: X| Reason: X
 
 1. Emily – The Ambitious Millennial Professional
 Age: 28
@@ -170,107 +177,12 @@ Problems: Time management between administrative tasks and research, bureaucrati
 Values: Knowledge, intellectual integrity, and academic rigor
 Buying Decision Process: Makes decisions based on detailed product specifications, peer-reviewed studies, and long-term academic value; relies on expert opinions and academic endorsements
 Internet & Website Usage: Regularly accesses academic databases, professional journals, educational platforms, and academic networking sites (such as ResearchGate and LinkedIn) for research and collaboration
-
-
-
-
-# image = PIL.Image.open('/content/openaiabout1.png')
-
-# response = client.models.generate_content(
-
-#     # model="gemini-2.0-flash",
-#     model="gemini-1.5-flash-8b-exp-0827",
-#     contents=["what is the company called", image])
-
-# print(response.text)
-
-
-
-
-for i in range(1, 5):  # Loop from 1 to 5 (inclusive)\
-    # print("FILE "+str(i))
-    filename = f'/Users/home/Documents/Programs/VidLearn/static/uploads/version{i}.png'
-    try:
-        image = PIL.Image.open(filename)
-        # Process the image here (e.g., display, save, manipulate)
-        # Example: image.show()  # Display the image (if you have a display)
-        # Example: image.save(f"/content/processed_image_{i}.png") #save a copy
-
-    except FileNotFoundError:
-        print(f"Error: File {filename} not found.")
-    except PIL.UnidentifiedImageError:
-        print(f"Error: {filename} is not a valid image file.")
-    except Exception as e:
-        print(f"An unexpected error occurred while processing {filename}: {e}")
-    response = client.models.generate_content(
-
-    model="gemini-2.0-flash",
-    # model="gemini-1.5-flash-8b-exp-0827",
-    contents=[text_example, image])
-
-    # print(response.text)
-    text_data = response.text
-
-
-
-
-
-
-
-
-
-
-    # Input data as a string
-    input_data = text_data
-    input_data = input_data.replace("Name: ", "")
-    input_data = input_data.replace("Score: ", "")
-    input_data = input_data.replace("Likes: ", "")
-    input_data = input_data.replace("Dislikes: ", "")
-    input_data = input_data.replace(".", "")
-    input_data = input_data.replace(":", "|")
-    input_data = input_data.replace(",", "")
-
-    data = input_data
-
-
-    # Split data into rows
-    #rows = [row.split("|") for row in data.split("\n")]
-    rows = [row.split("|") for row in data.split("\n") if row.strip()]
-
-    # Define CSV file name
-    csv_filename = f'reviews{i}.csv'
-
-    # Write to CSV
-    with open(csv_filename, mode="w", newline="") as file:
-        writer = csv.writer(file)
-        writer.writerow(["Name", "Score", "Like Description", "Dislike"])  # Column headers
-        writer.writerows(rows)
-
-    # print(f"CSV file '{csv_filename}' has been created successfully.")
 '''
-
-# response.py
-from google import genai
-from google.genai import types
-import csv
-import PIL.Image
-import os
-
-def process_uploaded_files(file_paths, csv_folder):
-    client = genai.Client(api_key="AIzaSyCZDI2WQbEAVhWH7AxasayTdkBK5yA5Uk8")
-    
-    text_example = '''
-For each of the people above, assume they are checking the website. the website's landing page image is attached. make them rate the website out of 100, and tell me things theyd like and not like about it, basically AB testing, and this is one of the tested websites.
-remove any unnecessary text and spacing between, any addition text other than what i am going to give you should be removed. only give one line per person and no other text. and here's exactly how your output should be generated:
-Name: X| Score: X| Likes: X| Dislikes: X
-...
-(Your full prompt text here)
-'''
-
-    # Loop over each provided PNG file
+    # Process each PNG file separately.
     for i, file_path in enumerate(file_paths, start=1):
         try:
             image = PIL.Image.open(file_path)
+            print(f"Accessed '{file_path}' successfully.")
         except FileNotFoundError:
             print(f"Error: File {file_path} not found.")
             continue
@@ -283,25 +195,76 @@ Name: X| Score: X| Likes: X| Dislikes: X
 
         response_obj = client.models.generate_content(
             model="gemini-2.0-flash",
-            contents=[text_example, image]
+            contents=[text_example, image],
         )
+        print(f"Response for file {i} received successfully.")
         text_data = response_obj.text
 
-        # Clean and process the response text to CSV-friendly format
-        input_data = text_data.replace("Name: ", "") \
-                              .replace("Score: ", "") \
-                              .replace("Likes: ", "") \
-                              .replace("Dislikes: ", "") \
-                              .replace(".", "") \
-                              .replace(":", "|") \
-                              .replace(",", "")
+        # Group rows by product.
+        products_dict = {}  # Key: product name, Value: list of rows.
         
-        rows = [row.split("|") for row in input_data.split("\n") if row.strip()]
+        for line in text_data.split("\n"):
+            line = line.strip()
+            if not line:
+                continue
 
-        # Define CSV file path
-        csv_filename = os.path.join(csv_folder, f'reviews{i}.csv')
-        with open(csv_filename, mode="w", newline="") as file:
-            writer = csv.writer(file)
-            writer.writerow(["Name", "Score", "Like Description", "Dislike"])
-            writer.writerows(rows)
-        print(f"CSV file '{csv_filename}' has been created successfully.")
+            # Split line on pipe.
+            parts = line.split("|")
+            # Check if we have the expected 6 parts.
+            if len(parts) == 6:
+                processed_parts = []
+                for part in parts:
+                    if ":" in part:
+                        # Split only on the first occurrence.
+                        key, value = part.split(":", 1)
+                        processed_parts.append(value.strip())
+                    else:
+                        processed_parts.append(part.strip())
+            elif len(parts) == 5:
+                # Attempt to recover missing field:
+                # The first part might include both Name and Product, separated by a colon.
+                first_part = parts[0].strip()
+                first_split = first_part.split(":", 1)
+                if len(first_split) == 2:
+                    # Create two parts: one for Name and one for Product.
+                    name_val = first_split[0].strip()
+                    product_val = first_split[1].strip()
+                    processed_parts = [name_val, product_val]
+                    # Process the remaining 4 parts.
+                    for part in parts[1:]:
+                        if ":" in part:
+                            key, value = part.split(":", 1)
+                            processed_parts.append(value.strip())
+                        else:
+                            processed_parts.append(part.strip())
+                else:
+                    print(f"Warning: Cannot split first part correctly: {line}")
+                    continue
+            else:
+                print(f"Warning: Line does not have 5 or 6 parts and will be skipped: {line}")
+                continue
+
+            # Validate that we now have exactly 6 columns.
+            if len(processed_parts) != 6:
+                print(f"Warning: Processed line does not have 6 columns and will be skipped: {processed_parts}")
+                continue
+
+            # Group by product (second field)
+            product = processed_parts[1]
+            if product not in products_dict:
+                products_dict[product] = []
+            products_dict[product].append(processed_parts)
+
+        # Write one CSV file per product.
+        for product, rows in products_dict.items():
+            sanitized_product = sanitize_filename(product)
+            csv_filename = os.path.join(csv_folder, f'reviews_{i}_{sanitized_product}.csv')
+            try:
+                with open(csv_filename, mode="w", newline="") as csvfile:
+                    writer = csv.writer(csvfile)
+                    # Write header as specified.
+                    writer.writerow(["Name", "Product", "Score", "Price", "Design", "Reason"])
+                    writer.writerows(rows)
+                print(f"CSV file '{csv_filename}' created successfully with {len(rows)} row(s).")
+            except Exception as e:
+                print(f"Failed to write CSV file '{csv_filename}': {e}")

@@ -1,0 +1,191 @@
+Name,Score,Like Description,Dislike
+Emily, Shoes, 50, 60, 70,  If the shoes were geared towards high-performance training she would consider buying them
+Emily, ChefT-Shirt, 20, 80, 10, 
+Emily, TrendT-Shirt, 30, 80, 20, 
+Emily, FullZip, 80, 65, 90, 
+Emily, SportsBra, 70, 75, 80,  If there were more color options she would buy the sports bra
+Emily, Leggings, 80, 70, 85, 
+Michael, Shoes, 10, 50, 20, 
+Michael, ChefT-Shirt, 5, 80, 5, 
+Michael, TrendT-Shirt, 5, 80, 5, 
+Michael, FullZip, 30, 40, 30, 
+Michael, SportsBra, 5, 40, 5, 
+Michael, Leggings, 5, 40, 5, 
+Sarah, Shoes, 70, 80, 80,  If these were on sale she would buy the shoes
+Sarah, ChefT-Shirt, 80, 90, 90, 
+Sarah, TrendT-Shirt, 75, 90, 70,  If the shirt design was more unique she would consider buying it
+Sarah, FullZip, 60, 50, 60,  If the full zip had a trendier style she would consider buying it
+Sarah, SportsBra, 80, 70, 80,  If this were on sale she would consider purchasing it
+Sarah, Leggings, 80, 75, 80,  If these had pockets she would buy the leggings
+David, Shoes, 10, 30, 10, 
+David, ChefT-Shirt, 5, 60, 5, 
+David, TrendT-Shirt, 5, 60, 5, 
+David, FullZip, 10, 20, 10, 
+David, SportsBra, 5, 20, 5, 
+David, Leggings, 5, 20, 5, 
+Alex, Shoes, 60, 70, 70,  If the shoes were available in more neutral colors he would consider buying them
+Alex, ChefT-Shirt, 70, 80, 80,  If the shirt had a more unique design he would buy the shirt
+Alex, TrendT-Shirt, 60, 80, 60,  If the T-shirt was a more interesting color he would consider purchasing it
+Alex, FullZip, 85, 70, 90, 
+Alex, SportsBra, 70, 75, 75,  If the sports bra was made by a sustainable brand he would buy it
+Alex, Leggings, 80, 70, 80,  If the leggings had interesting textures he would buy them
+Carlos, Shoes, 30, 40, 30, 
+Carlos, ChefT-Shirt, 10, 70, 10, 
+Carlos, TrendT-Shirt, 10, 70, 10, 
+Carlos, FullZip, 40, 30, 40, 
+Carlos, SportsBra, 10, 30, 10, 
+Carlos, Leggings, 10, 30, 10, 
+Lisa, Shoes, 40, 70, 30, 
+Lisa, ChefT-Shirt, 70, 90, 80,  If the chef T-shirt was available for women she would consider purchasing it
+Lisa, TrendT-Shirt, 60, 90, 70,  If there were more reviews for the T-shirt she would consider purchasing it
+Lisa, FullZip, 75, 60, 70,  If the full zip was machine washable she would buy the full zip
+Lisa, SportsBra, 60, 60, 60,  If the sports bra had additional support she would consider purchasing it
+Lisa, Leggings, 70, 60, 70,  If the leggings had pockets she would buy them
+Brandon, Shoes, 30, 60, 20, 
+Brandon, ChefT-Shirt, 20, 70, 10, 
+Brandon, TrendT-Shirt, 20, 70, 10, 
+Brandon, FullZip, 60, 40, 50,  If the full zip was more durable and weather-resistant he would consider buying it
+Brandon, SportsBra, 5, 30, 5, 
+Brandon, Leggings, 5, 30, 5, 
+Katie, Shoes, 40, 60, 40, 
+Katie, ChefT-Shirt, 40, 80, 30, 
+Katie, TrendT-Shirt, 30, 80, 20, 
+Katie, FullZip, 80, 70, 80, 
+Katie, SportsBra, 80, 70, 80, 
+Katie, Leggings, 85, 70, 80, 
+Sean, Shoes, 10, 30, 10, 
+Sean, ChefT-Shirt, 5, 60, 5, 
+Sean, TrendT-Shirt, 5, 60, 5, 
+Sean, FullZip, 20, 40, 20, 
+Sean, SportsBra, 5, 40, 5, 
+Sean, Leggings, 5, 40, 5, 
+Emily, Project Rock Shoes, 75, 65, 85,  If they were a more neutral color to match with more outfits she would buy them
+Michael, Fleece Grid Full-Zip, 70, 60, 65,  If it was a more common brand he recognized for reliability he would buy it
+Sarah, Meridian Mesh Shorts, 85, 90, 90, 
+David, Heavyweight Long Sleeve, 30, 70, 25, 
+Alex, Apparition Shoes, 90, 70, 95, 
+Carlos, Project Rock Shoes, 60, 50, 70,  If there were case studies available on its performance he might buy it
+Lisa, Fleece Hoodie, 70, 80, 75,  If other parents recommended it for durability and comfort she would buy it
+Brandon, Heavyweight Long Sleeve, 85, 90, 70, 
+Katie, Meridian Mesh Shorts, 50, 60, 70, 
+Sean, Unstoppable Fleece Grid, 30, 40, 30, 
+Emily, Curry Fox 1,50,60,40, Not a priority item would consider if it were more affordable or had a clear professional benefit
+Emily, Icon Hoodie,65,70,70, If it came in a more neutral color it could be used as a professional casual option
+Emily, HeatGear Sleeve,30,50,20, 
+Emily, Boxerjock,40,80,30, 
+Emily, Icon Shorts,50,70,50, If they were marketed as good for athleisure she would consider purchasing
+Emily, Project Rock,70,75,75, If they were a bit more versatile for both work and workouts she would consider buying them
+Michael, Curry Fox 1,20,30,20, 
+Michael, Icon Hoodie,75,65,70, A darker more practical color would increase the likelihood of purchase
+Michael, HeatGear Sleeve,80,80,70, If it were advertised as high performance and good for training he would buy it
+Michael, Boxerjock,50,70,30, 
+Michael, Icon Shorts,60,60,60, If the shorts emphasized durability and utility he would consider purchasing
+Michael, Project Rock,90,85,80, 
+Sarah, Curry Fox 1,85,60,90,
+Sarah, Icon Hoodie,90,70,95,
+Sarah, HeatGear Sleeve,70,80,70, If it was marketed as good for fashion or for sport she would buy it
+Sarah, Boxerjock,80,90,100, If the shorts were good quality she would buy it
+Sarah, Icon Shorts,85,90,90,
+Sarah, Project Rock,80,75,85, If they are good for casual wear she would consider buying them
+David, Curry Fox 1,10,20,10, 
+David, Icon Hoodie,30,40,30, 
+David, HeatGear Sleeve,10,20,10, 
+David, Boxerjock,5,10,5, 
+David, Icon Shorts,20,30,20, 
+David, Project Rock,10,20,10, 
+Alex, Curry Fox 1,75,65,80, If it was marketed towards her specifically she would consider buying them
+Alex, Icon Hoodie,80,70,85, If the fit and style were more unique it would increase the likelihood of purchase
+Alex, HeatGear Sleeve,40,60,40, 
+Alex, Boxerjock,90,80,100,
+Alex, Icon Shorts,70,75,75, If they were styled in a more visually striking way she would consider purchasing
+Alex, Project Rock,85,70,85,
+Carlos, Curry Fox 1,60,50,50, If these were endorsed by a prominent athlete in a business context he would consider purchasing
+Carlos, Icon Hoodie,70,60,65, If the hoodie could be branded with his company logo he would purchase
+Carlos, HeatGear Sleeve,75,80,60, If the technology was cutting-edge and could enhance his performance during workouts he would consider purchasing
+Carlos, Boxerjock,30,70,20, 
+Carlos, Icon Shorts,65,60,60, If the shorts had documented performance benefits he would consider them
+Carlos, Project Rock,70,70,70, If these shoes offered measurable performance data he would be more inclined to buy
+Lisa, Curry Fox 1,20,30,20, 
+Lisa, Icon Hoodie,60,70,60, If it were on sale and good quality she would buy it
+Lisa, HeatGear Sleeve,20,30,20, 
+Lisa, Boxerjock,10,20,10, 
+Lisa, Icon Shorts,40,60,40, 
+Lisa, Project Rock,30,40,30, 
+Brandon, Curry Fox 1,20,30,20, 
+Brandon, Icon Hoodie,70,75,70, If it were durable enough to be worn on a jobsite he would buy it
+Brandon, HeatGear Sleeve,50,50,50, 
+Brandon, Boxerjock,60,70,50, If the boxerjock are durable he would buy it
+Brandon, Icon Shorts,60,60,50, If the shorts were extremely durable he would buy it
+Brandon, Project Rock,80,80,80, If these were built for a jobsite he would buy them
+Katie, Curry Fox 1,60,60,60, If they had features that made it worth their price she would consider purchasing
+Katie, Icon Hoodie,80,70,80, If it were high-quality she would buy it
+Katie, HeatGear Sleeve,50,60,50, 
+Katie, Boxerjock,60,60,60, If the comfort was really good she would consider purchasing
+Katie, Icon Shorts,75,70,75, If the fabric had features that made it worth the price she would consider purchasing
+Katie, Project Rock,80,75,80, If they had an endorsement she would buy them
+Sean, Curry Fox 1,10,10,10, 
+Sean, Icon Hoodie,20,20,20, 
+Sean, HeatGear Sleeve,10,10,10, 
+Sean, Boxerjock,5,5,5, 
+Sean, Icon Shorts,10,10,10, 
+Sean, Project Rock,10,10,10, 
+Emily, Unisex UA SlipSpeed™ Mega Fade Shoes, 70, 60, 80,  A slightly more professional or sleek color option would make it an instant buy
+Emily, Men's UA Icon Charged Cotton® Short Sleeve, 85, 80, 80, 
+Emily, Men's UA Unstoppable Tapered Pants, 80, 75, 70,  More color variety could make her want to get these
+Emily, Men's UA Phantom 1 Shoes, 65, 60, 70,  A more modern or sleek design would attract her more
+Emily, Men's UA Left Chest Logo Short Sleeve, 80, 90, 75,  A slightly more modern fit could make her want to get these
+Emily, Unisex UA SpeedForm® Gemini Running Shoes, 70, 65, 70,  A more modern or sleek design would attract her more
+Michael, Unisex UA SlipSpeed™ Mega Fade Shoes, 50, 40, 50, 
+Michael, Men's UA Icon Charged Cotton® Short Sleeve, 70, 80, 75,  Knowing more about the fabric and its performance qualities could make him consider it
+Michael, Men's UA Unstoppable Tapered Pants, 75, 70, 70,  Understanding their durability and practical features would make them more appealing
+Michael, Men's UA Phantom 1 Shoes, 60, 55, 60,  If the shoes have more practical use for him he might consider them
+Michael, Men's UA Left Chest Logo Short Sleeve, 80, 90, 80, 
+Michael, Unisex UA SpeedForm® Gemini Running Shoes, 60, 55, 60,  Knowing more about its performance and durability could make him consider it
+Sarah, Unisex UA SlipSpeed™ Mega Fade Shoes, 80, 75, 85,  A student discount could entice her to buy these
+Sarah, Men's UA Icon Charged Cotton® Short Sleeve, 90, 95, 85, 
+Sarah, Men's UA Unstoppable Tapered Pants, 85, 80, 80, 
+Sarah, Men's UA Phantom 1 Shoes, 75, 70, 70,  A trending color option would significantly increase her interest
+Sarah, Men's UA Left Chest Logo Short Sleeve, 95, 100, 90, 
+Sarah, Unisex UA SpeedForm® Gemini Running Shoes, 70, 65, 70,  If these were the trending shoes in the market then she would consider buying them
+David, Unisex UA SlipSpeed™ Mega Fade Shoes, 30, 30, 20, 
+David, Men's UA Icon Charged Cotton® Short Sleeve, 50, 60, 50, 
+David, Men's UA Unstoppable Tapered Pants, 40, 40, 30, 
+David, Men's UA Phantom 1 Shoes, 20, 20, 10, 
+David, Men's UA Left Chest Logo Short Sleeve, 60, 70, 60,  If the shirt was something easy to wear for his everyday comfort he might consider buying it
+David, Unisex UA SpeedForm® Gemini Running Shoes, 30, 30, 20, 
+Alex, Unisex UA SlipSpeed™ Mega Fade Shoes, 80, 75, 90, 
+Alex, Men's UA Icon Charged Cotton® Short Sleeve, 75, 80, 70,  A unique color or artistic collaboration would make it more appealing
+Alex, Men's UA Unstoppable Tapered Pants, 70, 65, 70,  If the pants had a unique design or art-inspired detail they might consider buying them
+Alex, Men's UA Phantom 1 Shoes, 85, 80, 90, 
+Alex, Men's UA Left Chest Logo Short Sleeve, 70, 75, 70,  If the shirt had a unique design or art-inspired detail they might consider buying them
+Alex, Unisex UA SpeedForm® Gemini Running Shoes, 80, 75, 85, 
+Carlos, Unisex UA SlipSpeed™ Mega Fade Shoes, 50, 40, 50, 
+Carlos, Men's UA Icon Charged Cotton® Short Sleeve, 60, 70, 60,  More information on its sustainable production or performance benefits would sway his decision
+Carlos, Men's UA Unstoppable Tapered Pants, 55, 50, 50, 
+Carlos, Men's UA Phantom 1 Shoes, 40, 30, 40, 
+Carlos, Men's UA Left Chest Logo Short Sleeve, 70, 80, 70,  Understanding its value as a corporate gift or team apparel could influence him
+Carlos, Unisex UA SpeedForm® Gemini Running Shoes, 50, 40, 50, 
+Lisa, Unisex UA SlipSpeed™ Mega Fade Shoes, 75, 70, 70,  If these shoes have a great sale she might consider them
+Lisa, Men's UA Icon Charged Cotton® Short Sleeve, 80, 90, 80, 
+Lisa, Men's UA Unstoppable Tapered Pants, 70, 65, 60,  Practical features like stain resistance or durability would increase her interest
+Lisa, Men's UA Phantom 1 Shoes, 60, 55, 50,  If the shoes have a great sale she might consider them
+Lisa, Men's UA Left Chest Logo Short Sleeve, 90, 100, 85, 
+Lisa, Unisex UA SpeedForm® Gemini Running Shoes, 65, 60, 60,  If these shoes have a great sale she might consider them
+Brandon, Unisex UA SlipSpeed™ Mega Fade Shoes, 50, 40, 40, 
+Brandon, Men's UA Icon Charged Cotton® Short Sleeve, 70, 80, 70,  If he knew they were durable and reliable they might attract him more
+Brandon, Men's UA Unstoppable Tapered Pants, 75, 70, 70,  If the pants were known to be durable they might attract him more
+Brandon, Men's UA Phantom 1 Shoes, 40, 30, 30, 
+Brandon, Men's UA Left Chest Logo Short Sleeve, 85, 95, 80, 
+Brandon, Unisex UA SpeedForm® Gemini Running Shoes, 40, 30, 30, 
+Katie, Unisex UA SlipSpeed™ Mega Fade Shoes, 80, 75, 85, 
+Katie, Men's UA Icon Charged Cotton® Short Sleeve, 85, 90, 80, 
+Katie, Men's UA Unstoppable Tapered Pants, 90, 85, 85, 
+Katie, Men's UA Phantom 1 Shoes, 70, 65, 70,  Knowing about their comfort for long periods of wear would persuade her
+Katie, Men's UA Left Chest Logo Short Sleeve, 85, 90, 80, 
+Katie, Unisex UA SpeedForm® Gemini Running Shoes, 75, 70, 75,  More information on their comfort for long periods of wear would persuade her
+Sean, Unisex UA SlipSpeed™ Mega Fade Shoes, 30, 30, 20, 
+Sean, Men's UA Icon Charged Cotton® Short Sleeve, 60, 70, 60,  If it were a high quality shirt that were comfortable he might consider buying it
+Sean, Men's UA Unstoppable Tapered Pants, 40, 40, 30, 
+Sean, Men's UA Phantom 1 Shoes, 20, 20, 10, 
+Sean, Men's UA Left Chest Logo Short Sleeve, 70, 80, 70,  If it were a high quality shirt that were comfortable he might consider buying it
+Sean, Unisex UA SpeedForm® Gemini Running Shoes, 30, 30, 20, 
