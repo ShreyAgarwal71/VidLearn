@@ -1,11 +1,11 @@
 Name,Product,Score,Price,Design,Reason
-Emily,Loop Transportation,70,65,85,I'd need to see it implemented successfully in another city first.
-Michael,Loop Transportation,85,70,75,
-Sarah,Loop Transportation,50,90,70,I would only buy if it became a popular trend and was highly affordable.
-David,Loop Transportation,40,30,20,
-Alex,Loop Transportation,80,60,90,"If it was more widely available in different cities, I would consider."
-Carlos,Loop Transportation,90,50,80,
-Lisa,Loop Transportation,40,80,20,
+Emily,Loop Transportation,65,50,80,"If the company had more of a proven track record and popularity with commuters, she would consider the product."
+Michael,Loop Transportation,70,40,60,"If there was more data around the long-term reliability and safety of the system, Michael would be more interested."
+Sarah,Loop Transportation,80,90,95,
+David,Loop Transportation,30,20,30,
+Alex,Loop Transportation,85,60,90,
+Carlos,Loop Transportation,90,75,80,
+Lisa,Loop Transportation,40,30,50,
 Brandon,Loop Transportation,50,60,40,
-Katie,Loop Transportation,65,70,75,If more widely available in rural areas or between small towns I would buy.
-Sean,Loop Transportation,20,10,10,
+Katie,Loop Transportation,75,65,75,"If there was more information on how it would benefit smaller towns and connectivity to rural areas, she would likely consider it."
+Sean,Loop Transportation,25,10,15,

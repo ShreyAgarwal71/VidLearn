@@ -80,7 +80,7 @@ def display():
     
     # Process only CSV files (sorted to ensure consistent order)
     for file in sorted(files):
-        if file.lower().endswith('.csv'):
+        if file.lower().endswith('.csv') and file != 'reviews1.csv' and file != 'reviews2.csv' and file != 'reviews3.csv' and file != 'reviews4.csv' and file != 'reviews_1_Books.csv' and file != 'reviews_1_Dress.csv' and file != 'reviews_1_Dresses.csv' and file != 'reviews_1_Medical_Care.csv' and file != 'reviews_1_Outerwear.csv' and file != 'reviews_1_Skincare.csv' and file != 'reviews_1_Sweater.csv':
             file_path = os.path.join(app.config['CSV_FOLDER'], file)
             with open(file_path, newline='') as csvfile:
                 reader = csv.reader(csvfile)
@@ -90,7 +90,7 @@ def display():
                     header = []
                 rows = list(reader)
             csv_data.append({
-                'filename': file,
+                'filename': file[:-4],
                 'header': header,
                 'rows': rows
             })
@@ -100,4 +100,3 @@ def display():
 
 if __name__ == '__main__':
     app.run(debug=True)
-
