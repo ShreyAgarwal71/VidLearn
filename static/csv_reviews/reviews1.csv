@@ -1,8 +1,0 @@
-Name,Score,Like Description,Dislike
-For each of the people above assume they are checking the website the website's landing page image is attached make them rate the website out of 100 and tell me things theyd like and not like about it basically AB testing and this is one of the tested websites
-remove any unnecessary text and spacing between any addition text other than what i am going to give you should be removed only give one line per person and no other text and here's exactly how your output should be generated,
-X, X, X, X
-John (65 year old male),, 70, Easy navigation clear categories, Too much blue cluttered feel
-Sarah (25 year old female),, 85, Free shipping promotion curated categories, Landing page image is generic lacks personalization
-Mike (40 year old male),, 60, Search bar functionality, Overwhelming number of options confusing layout
-Emily (30 year old female),, 90, Clothing categories shown, The bright blue color
