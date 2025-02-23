@@ -39,9 +39,11 @@ def automate_website(url):
 
 
 recorder = pyscreenrec.ScreenRecorder()
+time.sleep(2) 
 recorder.start_recording("websiteRecording.mp4", 10)
 
 # website 
-automate_website("https://www.snackpass.co/")
+# automate_website("https://www.snackpass.co/")
+time.sleep(5)  # Let it record for a few seconds
 
 recorder.stop_recording()
